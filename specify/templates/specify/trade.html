@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p> {{ trade_data.ticker }} </p>
+<p> {{ trade_data.open }} </p>
+{% for each_open in trade_data.open %}
+<p> {{ each_open }} </p>
+{% endfor %}
+
+ 
+<!--
+{% for keys, value in trade_data.items %}
+     <tr border = 1px black> 
+         <th>{{ keys }}</th>
+         {% for eachval in value %}
+             <td> {{ eachval}}</td>
+         {% endfor %}
+     </tr>
+{% endfor %} 
+-->
+
+{% endblock %}

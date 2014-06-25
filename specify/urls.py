@@ -8,5 +8,4 @@ urlpatterns = patterns('',
     url(r'^$', index, name='index'),
     url(r'^get_exp_rhs/(?P<expression_lhs_id>\d+)/$', get_exp_rhs, name='get_exp_rhs'),
     (r'^protect/', ProtectView.as_view()),
-#	url(r'^trade/', TradeView.as_view(), name='trade'),
 )

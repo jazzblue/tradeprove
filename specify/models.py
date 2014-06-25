@@ -1,22 +1,21 @@
 from django.db import models
-#from django.db.models import Q
 from django.contrib.auth.models import User
 
 
 class IndicatorType(models.Model):
     """Stores a indicator type."""
-	
+    
     indicator_type = models.CharField(max_length=10)
 
     def __unicode__(self):
         return self.indicator_type
         
-	
+    
 class Indicator(models.Model):
     """
     Stores a definition of an indicator, related to :model:`specify.IndicatorType` and 
-	:model:`auth.User`.
-	
+    :model:`auth.User`.
+    
     """
     # Indicator can be either basic or not (user defined)
     # Non-basic properties can be seen only by the user who defined them.
@@ -25,7 +24,7 @@ class Indicator(models.Model):
     name = models.CharField(max_length=50)
     basic = models.BooleanField()
     type = models.ForeignKey(IndicatorType) 
-	
+    
     def __unicode__(self):
         return self.name
 
@@ -37,7 +36,7 @@ class IndicatorOperator(models.Model):
     
     """
     operator = models.CharField(max_length=10)
-    type = models.ForeignKey(IndicatorType)	
+    type = models.ForeignKey(IndicatorType)    
 
     def __unicode__(self):
         return self.operator
@@ -50,7 +49,7 @@ class ElementOperator(models.Model):
     
     """
     operator = models.CharField(max_length=10)
-	
+    
     def __unicode__(self):
         return self.operator
     
@@ -88,23 +87,23 @@ class Setup(models.Model):
         self.setup_title = "setup_" + self.rule.rule_title
         super(Setup, self).save(*args, **kwargs)
         
-		
+        
 class ElementAttr(models.Model):
     """Common base class for all element models. Defines group attributes and element ID. """
-	
+    
     # Grouping is equivalent to applying parenthesis to a sequence of elements, such that the level of parenthesis is 
     # the level of grouping.
     # group_open and group_close are mutually exclusive: the parenthesis can be either opening or closing or none, 
     # but not both at the same time.
     group_open = models.BooleanField(default = False)
     group_close = models.BooleanField(default = False)
-	
+    
     # Highest group level on the cell not counting 'group-self', value 0 means no groups on the cell except 'group-self'
     group_high = models.IntegerField(default = 0)
-	
+    
     # Lowest level of group-open or group-close (group-end), value 0 means that all levels are group-mid.
     group_end_level = models.IntegerField(default = 0)
-	
+    
     element_id = models.CharField(max_length=200, default="sample")
 
     class Meta:
@@ -113,15 +112,15 @@ class ElementAttr(models.Model):
     
 class Event(ElementAttr):
     """Stores a single Event with its attributes, related to :model:`specify.Setup`."""
-	
+    
     setup = models.ForeignKey(Setup)
     title = models.CharField(max_length=50, blank=True)
     ref_index = models.IntegerField()       # index by which this element can be referenced by other elements
 
-	
+    
 class Branch(ElementAttr):
     """Stores a single Branch with its attributes, related to :model:`specify.Setup`."""
-	
+    
     setup = models.ForeignKey(Setup)
     branch_metric_min = models.CharField(max_length=2)    
     branch_metric_max = models.CharField(max_length=2)    
@@ -133,30 +132,30 @@ class Condition(ElementAttr):
     setup = models.ForeignKey(Setup)
     title = models.CharField(max_length=50, blank=True)
     invert = models.BooleanField()
-	
+    
     # Left hand side expression.
     expression_lhs = models.ForeignKey(Indicator, related_name='cond_expression_lhs')
-	
+    
     # Right hand side expression.
     expression_rhs = models.ForeignKey(Indicator, related_name='cond_expression_rhs')
-	
+    
     indicator_operator = models.ForeignKey(IndicatorOperator)
-	
+    
     WEEK_DAY_CHOICES = [(str(n), d) for n, d in enumerate(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])]
-		
+        
     value_real = models.DecimalField(max_digits=10, decimal_places=2)
 
     value_weekday = models.CharField(
-	    max_length=3,
+        max_length=3,
         choices=WEEK_DAY_CHOICES,
         default='1'  # Monday
     )
-	
+    
     MAX_BACKREFERENCE_CHOICE = 30
     BACKREFERENCE_CHOICES = [(str(x), str(x)) for x in range(1, MAX_BACKREFERENCE_CHOICE + 1)]
     
     backreference = models.CharField(
-	    max_length=2,
+        max_length=2,
         choices=BACKREFERENCE_CHOICES,
         default=str(MAX_BACKREFERENCE_CHOICE)
     )

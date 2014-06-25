@@ -1,0 +1,21 @@
+
+{% load staticfiles %}
+
+<link href="{% static 'base.css' %}" rel="stylesheet" media="screen" type="text/css" />
+
+<h2>Beyond Entry</h2>
+
+<!-- DEBUG
+<p>request.path: {{ request.path }}</p>
+-->
+
+<div class="base">
+{% if user.is_authenticated %}
+	Hi, <a href="{% url 'django.contrib.auth.views.login' %}?next={{ request.path }}">{{ user.username }}</a>
+{% else %}
+	<a href="{% url 'django.contrib.auth.views.login' %}?next={{ request.path }}">Login</a>
+{% endif %}
+</div>
+
+{% block content %}
+{% endblock %}

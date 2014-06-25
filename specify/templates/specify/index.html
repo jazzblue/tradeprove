@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load staticfiles %}
+
+<head>
+<!--<link href="{% static 'specify/specify.css' %}" rel="stylesheet" media="screen" type="text/css" /> -->
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<!--
+<script src="{% static 'specify/specify_layout_defs.js' %}"></script>
+<script src="{% static 'specify/specify.js' %}"></script>
+-->
+
+<script src="{% static 'specify/specify_defs.js' %}"></script>
+<script src="{% static 'specify/specify_general.js' %}"></script>
+<script src="{% static 'specify/specify_layout_func.js' %}"></script>
+<script src="{% static 'specify/specify_layout_cfg.js' %}"></script>
+<script src="{% static 'specify/specify_group_layout.js' %}"></script>
+<script src="{% static 'specify/specify_group.js' %}"></script>
+<script src="{% static 'specify/specify_dialog.js' %}"></script>
+<script src="{% static 'specify/specify.js' %}"></script>
+
+</head>
+
+<body>
+
+<h2>Specify</h2>
+
+<!-- <div id="rule_form"> -->
+<!--	{{ rule_form.as_p }} -->
+<form id="form___rule" class="form___rule">
+	{{ rule_form }}
+	
+	{% if rule_id %}
+	<input type="hidden" value="{{ rule_id }}" id='rule_id' name="rule_id"/>	
+	{% endif %}	
+    
+    <button type="button" class="button_save">Save</button>
+</form>
+	
+<!-- </div> -->
+
+<!--
+<div id="primary_security_form">
+	{{ primary_security_form }}
+</div>
+
+<form id="form___primary_security" class="form___primary_security">
+	{{ primary_security_form }}	
+</form>
+-->
+
+	<!--
+<form id="formset_management_form">
+    {{ formset.management_form }}
+</form>
+-->
+
+<div id="app_forms_container"  style="position:absolute; left:20px;top:800px;">
+	{% for form in event_formset %}
+		<form id="form___{{ form.element_id.value }}" class="form___{{ form.css_class }}">
+		{{ form }}
+		</form>
+	{% endfor %}
+	{% for form in branch_formset %}
+		<form id="form___{{ form.element_id.value }}" class="form___{{ form.css_class }}">
+		{{ form }}
+		</form>
+	{% endfor %}	
+	{% for form in condition_formset %}
+		<form id="form___{{ form.element_id.value }}" class="form___{{ form.css_class }}">
+		{{ form }}
+		</form>
+	{% endfor %}
+	{% for form in cond_oper_formset %}
+		<form id="form___{{ form.element_id.value }}" class="form___{{ form.css_class }}">
+		{{ form }}
+		</form>
+	{% endfor %}	
+	{% for form in entry_event_formset %}
+		<form id="form___{{ form.element_id.value }}" class="form___{{ form.css_class }}">
+		{{ form }}
+		</form>
+	{% endfor %}	
+</div>
+
+<form id="management_form"> 
+	{% csrf_token %}
+    {{ event_formset.management_form }}
+    {{ branch_formset.management_form }}
+    {{ condition_formset.management_form }}
+    {{ cond_oper_formset.management_form }}
+    {{ entry_event_formset.management_form }}	
+</form>
+
+<form id="formset_submit" method="post" style="position:absolute; left:20px;top:800px;">
+</form>
+
+<!--
+<form style="position:absolute;left:20px;top:500px" id="save_formset" method="post" action="">
+    {{ formset }}
+	<input type="submit" value="Save" />	
+</form>
+-->
+
+<!--
+<div id = "table_container">
+	<div id="event_table" class="event_table"></div>
+	<div id="cond_table" class="cond_table"></div>
+</div>
+
+	<div class="event_cell"></div>
+
+	
+	<div id="sample_cond_cell" class="cond_cell"></div>
+	
+	<div id="sample_group" class="sample_group"></div>
+
+</body>
+-->
+
+</body>
+{% endblock %}

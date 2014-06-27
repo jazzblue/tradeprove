@@ -169,35 +169,16 @@ class CondOper(ElementAttr):
     """
     setup = models.ForeignKey(Setup)
     operator = models.ForeignKey(ElementOperator)
-#    invert = models.BooleanField()
     
 class EntryEvent(ElementAttr):
+    """TBD: Stores Entry event."""
     setup = models.ForeignKey(Setup)
-#    user = models.ForeignKey(User, blank=True, null=True)
-#    element_id = models.CharField(max_length=200, default="sample_event")
+
                                       
     title = models.CharField(max_length=50, blank=True)
     ref_index = models.IntegerField()    
 
-#class PrimarySecuritySet(models.Model):
-#    rule = models.OneToOneField(Rule, primary_key=True)
-#    security_set = models.ForeignKey(SecuritySet)   #OneToOne???
-    
-#class SecuritySet(models.Model):
-#    name = models.CharField(max_length=50, blank=True)
-#    security = models.ForeignKey(Security)
-        
-        
-#class PrimarySecurity(models.Model):
-#    rule = models.OneToOneField(Rule, primary_key=True)
-#    ticker = models.ForeignKey(Security)   #OneToOne???        
 
-    #--------- Experiment 
-
-class TradeTime(models.Model):
-    trade_time = models.DateTimeField('Time')    
-    ticker = models.CharField('Ticker', max_length=10)
-    
     
     
     

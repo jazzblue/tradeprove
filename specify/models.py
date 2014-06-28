@@ -171,10 +171,12 @@ class CondOper(ElementAttr):
     operator = models.ForeignKey(ElementOperator)
     
 class EntryEvent(ElementAttr):
-    """TBD: Stores Entry event."""
-    setup = models.ForeignKey(Setup)
+    """
+    Stores Entry event.
+    TBD.
 
-                                      
+    """
+    setup = models.ForeignKey(Setup)                                 
     title = models.CharField(max_length=50, blank=True)
     ref_index = models.IntegerField()    
 

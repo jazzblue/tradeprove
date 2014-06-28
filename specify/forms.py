@@ -1,9 +1,12 @@
 from django.forms import ModelForm, TextInput, CheckboxInput, Select, HiddenInput, ModelChoiceField
-from specify.models import ElementAttr, Event, Branch, Condition, CondOper, EntryEvent, Rule, Indicator, Instrument  #, Security, PrimarySecurity,
+from specify.models import ElementAttr, Event, Branch, Condition, CondOper, EntryEvent, Rule, Indicator, Instrument
 from django.db.models import Q
 
 
 class RuleForm(ModelForm):
+    """Form for rule specification."""
+
+    # Get all instruments from database for the drop-down menu
     primary_instrument = ModelChoiceField(
         queryset=Instrument.objects.all(),
         widget=Select(attrs={'class': 'primary_instrument'})

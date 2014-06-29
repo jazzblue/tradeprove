@@ -587,14 +587,14 @@ var element_cfg_table = {
 function branch_stem_width(parent_class) {
     // Returns branch arrow stem width.
 
-    return (Math.round(element_cfg_table[parent_class]["operator_cell_length"]
+    return(Math.round(element_cfg_table[parent_class]["operator_cell_length"]
                        * (element_cfg_table["event"]["fields_width_pcnt"]/100)*(element_cfg_table["branch"]["fields_subobject-1_width_pcnt"]/100)));
 }
 
 function branch_triangle_length(parent_class) {
     // Returns branch arrow triangle length.
 
-    return (Math.round(element_cfg_table[parent_class]["operator_cell_length"] - branch_stem_width(parent_class)));
+    return(Math.round(element_cfg_table[parent_class]["operator_cell_length"] - branch_stem_width(parent_class)));
 }
 
 
@@ -682,16 +682,16 @@ element_graphic_table = {
         "init_dimensions": {
             "left": 0,
             "top": function(parent_class) { 
-                return( get_midplacement_offset(element_cfg_table[parent_class]["operand_cell_length"], 
+                return(get_midplacement_offset(element_cfg_table[parent_class]["operand_cell_length"], 
                                                                           element_cfg_table["event"]["fields_height_pcnt"], true)
                 )
             },
             
             "width": function(parent_class) {
-                return( length_with_border("event", parent_class, "width", "operand_cell_length"));
+                return(length_with_border("event", parent_class, "width", "operand_cell_length"));
             },
             "height": function(parent_class) { 
-                return( length_with_border("event", parent_class, "height", "common_cell_length"));
+                return(length_with_border("event", parent_class, "height", "common_cell_length"));
             },
             "border-width": element_cfg_table["event"]["fields_border_width"],      
             "border-radius": function(parent_class) {
@@ -1078,11 +1078,11 @@ element_graphic_table = {
             "top": 0,
             "left": 0,
             "width": function(parent_class) {
-                return( length_with_border("exit_branch_target_condition", 
+                return(length_with_border("exit_branch_target_condition", 
                                                           parent_class, "width", "common_cell_length"));
             },
             "height": function(parent_class) {
-                return( length_with_border("exit_branch_target_condition",
+                return(length_with_border("exit_branch_target_condition",
                                                           parent_class, "height", "operand_cell_length"));
             },
             "border-width": element_cfg_table["exit_branch_target_condition"]["fields_border_width"],      
@@ -1103,7 +1103,7 @@ element_graphic_table = {
             "top": 0,
             "left": 0,
             "width": function(parent_class) {
-                return( length_with_border("exit_branch_stop_condition",
+                return(length_with_border("exit_branch_stop_condition",
                                                           parent_class, "width", "common_cell_length"));
             },
             "height": function(parent_class) {

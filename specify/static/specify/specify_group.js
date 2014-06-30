@@ -4,18 +4,14 @@
 *
 * Description:
 * Group processor functions for Specify application web client.
-* Group is a graphic representation of parenthesis which can be placed or 
-* removed.
+* Group is a graphic representation of parenthesis which can be  
+* placed or removed.
 *
 * Dependencies:
-*  - specify_defs.js
+*  - specify_global.js
 *  - specify_layout_func.js
 *  - specify_group_layout.js
 ****************************************************************/
-
-// Create group dialog HTML object (global variable)
-var group_dialog = $("<div/>");
-
 
 function create_group(group_type, group_orientation) {
     // Creates and returns group HTML object.
@@ -64,10 +60,10 @@ function bind_group_dialog(groups) {
 
         var invoking_group = $(this);
 
-        group_dialog.attr("title", "Delete grouping?");
+        GROUP_DIALOG.attr("title", "Delete grouping?");
             
         // Dialog setup
-        group_dialog.dialog({
+        GROUP_DIALOG.dialog({
             autoOpen: false,
             modal: true,            
             position: { of: invoking_group }, // place at the center of invoking fields
@@ -101,7 +97,7 @@ function bind_group_dialog(groups) {
                 },
             ]
         })
-        group_dialog.dialog("open");
+        GROUP_DIALOG.dialog("open");
     });    
 }
 
@@ -210,7 +206,7 @@ function process_groups(cell, parent_class) {
         //  1. Set the same shape as operand field in that formula.
         //  2. If the fields is operator, change group's length to "operator length"
                 
-        add_graphic_attributes(operand_class, groups, element_graphic_table, parent_class);  // Item 1. above
+        add_geometry(operand_class, groups, element_geometry_table, parent_class);  // Item 1. above
         
         var is_operator = cell.children("." + FIELDS_CLASS_NAME).hasClass("operator");
 

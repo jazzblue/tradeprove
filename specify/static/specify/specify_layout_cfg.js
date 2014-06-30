@@ -599,15 +599,14 @@ function branch_triangle_length(parent_class) {
 
 
 // Element CSS attributes configuration table
-element_graphic_table = {
+element_geometry_table = {
     "setup": {
         "style": {
             "background-color": workspace_background_color,
-
             "border-style": "solid",
             "border-color": "white"
         },
-        "init_dimensions": {
+        "geometry": {
             "left": area_setup_left,
             "top": area_setup_top,
             "width": area_setup_width - 2*area_border_width,
@@ -623,11 +622,10 @@ element_graphic_table = {
     "entry": {
         "style": {
             "background-color": workspace_background_color,
-
             "border-style": "solid",
             "border-color": "white"
         },
-        "init_dimensions": {
+        "geometry": {
             "left": area_entry_left,
             "top": area_setup_top,
             "width": area_entry_width - 2*area_border_width,
@@ -643,11 +641,10 @@ element_graphic_table = {
     "exit": {
         "style": {
             "background-color": workspace_background_color,
-
             "border-style": "solid",
             "border-color": "white"
         },
-        "init_dimensions": {
+        "geometry": {
             "left": area_exit_left,
             "top": area_setup_top,
             "width": 500 - 2*area_border_width,
@@ -663,10 +660,9 @@ element_graphic_table = {
     "setup_sequence": {
         "style": {
             "background-color": "transparent",
-            
             "border": "none",
         },
-        "init_dimensions": {   // these are fields' CSS
+        "geometry": {   // these are fields' CSS
             "left": 20,
             "top": 3,
         },
@@ -675,18 +671,17 @@ element_graphic_table = {
     "event": {
         "style": {
             "background-color": "#C6C6FF",
-            
             "border-style": "solid",
             "border-color": "#484848"
         },
-        "init_dimensions": {
+
+        "geometry": {
             "left": 0,
             "top": function(parent_class) { 
                 return(get_midplacement_offset(element_cfg_table[parent_class]["operand_cell_length"], 
-                                                                          element_cfg_table["event"]["fields_height_pcnt"], true)
+                                                         element_cfg_table["event"]["fields_height_pcnt"], true)
                 )
-            },
-            
+            },            
             "width": function(parent_class) {
                 return(length_with_border("event", parent_class, "width", "operand_cell_length"));
             },
@@ -706,7 +701,7 @@ element_graphic_table = {
                 "background-color": "#6755E3",
                 "border-color": "transparent"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": 0,
                 "top": function(parent_class) {
                     return(get_midplacement_offset(
@@ -732,7 +727,7 @@ element_graphic_table = {
                 "border-top-style": "solid",
                 "border-bottom-style": "solid"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": function(parent_class) { return(branch_stem_width(parent_class)); },
                 "top": function(parent_class) {
                     return(get_midplacement_offset(
@@ -754,7 +749,7 @@ element_graphic_table = {
         "style": {
             "background-color": "green",
         },
-        "init_dimensions": {
+        "geometry": {
             // common_cell_length - horizontal direction, offset is to the center, "left" is to the border, 
             // therefore, adjusting by half a width
             "left": element_cfg_table["setup_sequence"]["operator_cell_length"]
@@ -779,11 +774,10 @@ element_graphic_table = {
     "condition": {
         "style": {
             "background-color": "#999999",
-            
             "border-style": "solid",
             "border-color": "#484848"
         },
-        "init_dimensions": {
+        "geometry": {
             "top": 0,
             "left": 0,
             "width": function(parent_class) {
@@ -805,7 +799,7 @@ element_graphic_table = {
                 "border-left-color": "#ff0000",                
                 "border-left-style": "solid",
             },
-            "init_dimensions": {
+            "geometry": {
                 "top": 0,
                 "left": function(parent_class) {
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -824,7 +818,7 @@ element_graphic_table = {
                 "background-color": "#6755E3",
                 "border-color": "transparent"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": function(parent_class) {
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
                                   element_cfg_table["condition_operator"]["fields_subobject-2_width_pcnt"], true)
@@ -852,11 +846,10 @@ element_graphic_table = {
     "entry_event": {
         "style": {
             "background-color": "#C6C6FF",
-            
             "border-style": "solid",
             "border-color": "#CC6600"
         },
-        "init_dimensions": {
+        "geometry": {
             "left": 0,
             "top": function(parent_class) {
                 return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -890,7 +883,7 @@ element_graphic_table = {
                 "background-color": "#990099",           
                 "border-color": "transparent"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": 0,
                 "top": function(parent_class) {
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -915,7 +908,7 @@ element_graphic_table = {
                 "border-top-style": "solid",
                 "border-bottom-style": "solid"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": function(parent_class) { return(branch_stem_width(parent_class)); },
                 "top": function(parent_class) { 
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -939,7 +932,7 @@ element_graphic_table = {
             "border-style": "solid",
             "border-color": "#990033"
         },
-        "init_dimensions": {
+        "geometry": {
             "left": 0,
             "top": function(parent_class) {
                 return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -973,7 +966,7 @@ element_graphic_table = {
                 "background-color": "#990099",           
                 "border-color": "transparent"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": 0,
                 "top": function(parent_class) {
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -998,7 +991,7 @@ element_graphic_table = {
                 "border-top-style": "solid",
                 "border-bottom-style": "solid"
             },
-            "init_dimensions": {
+            "geometry": {
                 "left": function(parent_class) { return(branch_stem_width(parent_class)); },
                 "top": function(parent_class) {
                     return(get_midplacement_offset(element_cfg_table[parent_class]["common_cell_length"],
@@ -1019,7 +1012,7 @@ element_graphic_table = {
         "style": {
             "background-color": "green",
         },
-        "init_dimensions": {
+        "geometry": {
             // common_cell_length - horizontal direction, offset is to the center, 
             // "left" is to the border, therefore, need to adjust by half of width
             "left": element_cfg_table["exit_sequence"]["operator_cell_length"]
@@ -1045,7 +1038,7 @@ element_graphic_table = {
         "style": {
             "background-color": "red",
         },
-        "init_dimensions": {
+        "geometry": {
             // operator_cell_length - horizontal direction, offset is to the center, "left" is to the border, 
             // therefore, need to adjust by half of width
             "left": element_cfg_table["exit_sequence"]["operator_cell_length"]
@@ -1074,7 +1067,7 @@ element_graphic_table = {
             "border-style": "solid",
             "border-color": "green"
         },
-        "init_dimensions": {
+        "geometry": {
             "top": 0,
             "left": 0,
             "width": function(parent_class) {
@@ -1099,7 +1092,7 @@ element_graphic_table = {
             "border-style": "solid",
             "border-color": "red"
         },
-        "init_dimensions": {
+        "geometry": {
             "top": 0,
             "left": 0,
             "width": function(parent_class) {

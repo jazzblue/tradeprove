@@ -27,50 +27,50 @@ function shape_group(group, parent_class, is_operator) {
     //      is_operator: true, if cell's element is operator, otherwise, false.
 
     // CSS attributes based on cell orientation
-    if (group.hasClass("cell-horizontal")) {
-        var open_end = "left",
+	if (group.hasClass("cell-horizontal")) {
+		var open_end = "left",
             close_end = "right",
             side_one = "top",
             side_two = "bottom",
             dimension = "width";
-    }
-    else {
-        var open_end = "top",
+	}
+	else {
+		var open_end = "top",
             close_end = "bottom",
             side_one = "left",
             side_two = "right",
             dimension = "height";
-    }
-    
-    group.css("background-color", get_group_color(group));
-    
-    if (group.hasClass("group-open") || group.hasClass("group-mid")) {
-        group.css("border-" + close_end + "-width", to_px(0));
-        group.css("border-" + close_end + "-" + side_one + "-radius", to_px(0));    
-        group.css("border-" + close_end + "-" + side_two + "-radius", to_px(0));    
-    }
-    
-    if (group.hasClass("group-close") || group.hasClass("group-mid")) {
-        group.css("border-" + open_end + "-width", to_px(0));    
-        group.css("border-" + open_end + "-" + side_one + "-radius", to_px(0));    
-        group.css("border-" + open_end + "-" + side_two + "-radius", to_px(0));    
-    }
-    
-    if (is_operator) {  // Operator can only be "group-mid"
-        group.css(dimension, to_px(element_cfg_table[parent_class]["operator_cell_length"]));
-    }
-    else {  // Operand case
-        if (group.hasClass("group-open") || group.hasClass("group-close")) {
+	}
+	
+	group.css("background-color", get_group_color(group));
+	
+	if (group.hasClass("group-open") || group.hasClass("group-mid")) {
+		group.css("border-" + close_end + "-width", to_px(0));
+		group.css("border-" + close_end + "-" + side_one + "-radius", to_px(0));	
+		group.css("border-" + close_end + "-" + side_two + "-radius", to_px(0));	
+	}
+	
+	if (group.hasClass("group-close") || group.hasClass("group-mid")) {
+		group.css("border-" + open_end + "-width", to_px(0));	
+		group.css("border-" + open_end + "-" + side_one + "-radius", to_px(0));	
+		group.css("border-" + open_end + "-" + side_two + "-radius", to_px(0));	
+	}
+	
+	if (is_operator) {  // Operator can only be "group-mid"
+		group.css(dimension, to_px(element_cfg_table[parent_class]["operator_cell_length"]));
+	}
+	else {  // Operand case
+		if (group.hasClass("group-open") || group.hasClass("group-close")) {
             // Group open or close should apply margin sticking out of the cell 
             
-            group.css(dimension, to_px(element_cfg_table[parent_class]["operand_cell_length"] 
-                  - element_cfg_table[element_cfg_table[parent_class]["dynamic_child_operand"]]["fields_border_width"]
-                  + group_margin));
-        }
-        else if (group.hasClass("group-mid")) {
-            group.css(dimension, to_px(element_cfg_table[parent_class]["operand_cell_length"]));
-        }
-    }    
+			group.css(dimension, to_px(element_cfg_table[parent_class]["operand_cell_length"] 
+				  - element_cfg_table[element_cfg_table[parent_class]["dynamic_child_operand"]]["fields_border_width"]
+				  + group_margin));
+		}
+		else if (group.hasClass("group-mid")) {
+			group.css(dimension, to_px(element_cfg_table[parent_class]["operand_cell_length"]));
+		}
+	}	
 }
 
 
@@ -81,14 +81,14 @@ function adjust_offset_in_cell (cell_item, offset) {
     //      offset: offset to be applied.
 
     // Determine offset dimension based on cell orientation
-    if (cell_item.hasClass("cell-horizontal")) { 
+	if (cell_item.hasClass("cell-horizontal")) { 
         var offset_dimension ="left"; 
     }
-    else {
+	else {
         var offset_dimension = "top";
     }
-    
-    cell_item.css(offset_dimension, offset);
+	
+	cell_item.css(offset_dimension, offset);
 }
 
 
@@ -96,10 +96,10 @@ function get_group_color(group) {
     // Sets group color
 
     // Color table (these are parameters that can be changed)
-    switch(group.index() % layer_colors_num)
-    {
-        case 0: return ("#D7D1F8");
-        case 1: return ("#5757FF");
-        default: return ("black");
-    }
+	switch(group.index() % layer_colors_num)
+	{
+		case 0: return ("#D7D1F8");
+		case 1: return ("#5757FF");
+		default: return ("black");
+	}
 }

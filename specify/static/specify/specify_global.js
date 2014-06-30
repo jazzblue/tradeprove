@@ -1,6 +1,6 @@
 /****************************************************************
 *
-* File name: specify_global.js
+* File name:     .js
 *
 * Description:
 * Constants and global variables for Specify application web client.

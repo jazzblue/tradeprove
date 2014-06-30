@@ -4,7 +4,7 @@ This repo is for code demonstration purposes only.
 
 The project is built using Django, a high level Python based Web framework.
 
-Most of Python and Javascript code are in the **specify** app.
+Most of Python and Javascript code are in the *specify* app.
 
 Other apps are work-in-progress and this repo has only their basic implementation. Their latest code is yet to be committed.
 

@@ -10,6 +10,10 @@ Other apps are work-in-progress and have only a basic implementation. Their late
 
 The Javascript code could be found in *specify/static/specify* directory.
 
+Note on CSS:
+
+In the *specify* app the CSS attributes are defined in Javascript using JSON format and assigned within Javascript code rather than in CSS file. This is to keep both constant and generically parametrized CSS attributes in one place (Javascript code). Therefore, at the moment *specify* app has no CSS file.
+
 
 
 
